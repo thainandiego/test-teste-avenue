@@ -4,7 +4,7 @@ name: openweather
     push:
       branches: [main]
       
-      jobs:
+jobs:
         openweather:
           runs-on: ubuntu-latest
           
