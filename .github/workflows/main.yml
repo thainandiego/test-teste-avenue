@@ -1,16 +1,31 @@
-name: teste-automação-api-qa
-
-concurrency: production
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deployment:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: deploy
+name: DemoNewCD
+  on:
+  workflow_dispatch:
+  
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Run a one-line script
+          run: echo Hello, world!
           
+          
+          deploy-qa:
+            runs-on: ubuntu-latest
+            environment:
+              name: qa
+              url: 'diegothainan.com'
+            needs: build
+            steps:
+              - name: Run a one-line script
+                run: echo deply qa
+
+  deploy-hmg:
+            runs-on: ubuntu-latest
+            environment:
+              name: hmg
+              url: 'diegothainan.com'
+            needs: deply-qa
+            steps:
+              - name: Run a one-line script
+                run: echo deply qa
