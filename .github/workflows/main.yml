@@ -1,22 +1,16 @@
-on: 
-  workflow_dispatch:
-  
-      jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Run a one-line script
-          run: API OpenWeather!
-          
-          
-    deploy-qa:
-      runs-on: ubuntu-latest
-      environment:
-      name: qa
-      url: 'diegothainan.com'
-    needs: build
-          steps:
-        - name: Run a one-line script
-          run: API OpenWeather QA!
-          
+name: teste-automação-api-qa
+
+concurrency: production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: deploy
           
