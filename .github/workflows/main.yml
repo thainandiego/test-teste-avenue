@@ -1,31 +1,33 @@
-name: DemoNewCD
-  on:
-  workflow_dispatch:
-  
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Run a one-line script
-          run: echo Hello, world!
-          
-          
-          deploy-qa:
-            runs-on: ubuntu-latest
-            environment:
-              name: qa
-              url: 'diegothainan.com'
-            needs: build
-            steps:
-              - name: Run a one-line script
-                run: echo deply qa
+name: openweather
 
-  deploy-hmg:
-            runs-on: ubuntu-latest
-            environment:
-              name: hmg
-              url: 'diegothainan.com'
-            needs: deply-qa
-            steps:
-              - name: Run a one-line script
-                run: echo deply qa
+  on:
+    push:
+      branches: [main]
+      
+      jobs:
+        openweather:
+          runs-on: ubuntu-latest
+          
+          steps:
+          
+            - uses: actions/checkout@3.1.0
+            
+            - name: Docker Login
+              uses: docker/login-action@2.1.0
+              with:
+                username: ${{ secrets.USER}}      
+                password: ${{ secrets.PASSWORD}}
+                
+            - name: Build and push Docker images
+              uses: docker/build-push-actions@3.2.0
+              with:
+                context: .
+                file: .
+                push: true
+                tags: |
+                  thainandiego/testeapi
+                  thainandiego/testeapi:latest
+                  
+                
+              
+        
