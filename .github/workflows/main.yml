@@ -1,11 +1,11 @@
-name: openweather
+name: api-open-weather
 
-  on:
+on:
     push:
-      branches: [main]
+      branches: [main] 
       
-jobs:
-        openweather:
+            jobs:
+api-open-weather:
           runs-on: ubuntu-latest
           
           steps:
@@ -27,7 +27,3 @@ jobs:
                 tags: |
                   thainandiego/testeapi
                   thainandiego/testeapi:latest
-                  
-                
-              
-        
