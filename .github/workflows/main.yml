@@ -10,10 +10,10 @@ api-open-weather:
           
           steps:
           
-            - uses: actions/checkout@3.1.0
+            - uses: actions/checkout@v3
             
             - name: Docker Login
-              uses: docker/login-action@2.1.0
+              uses: docker/login-action@v2.1.0
               with:
                 username: ${{ secrets.USER}}      
                 password: ${{ secrets.PASSWORD}}
