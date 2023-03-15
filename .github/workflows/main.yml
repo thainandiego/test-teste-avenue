@@ -4,7 +4,7 @@ on:
     push:
       branches: [main] 
       
-            jobs:
+jobs:
 api-open-weather:
           runs-on: ubuntu-latest
           
